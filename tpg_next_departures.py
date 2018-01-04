@@ -21,11 +21,11 @@ def parse_minutes(the_list):
     return minutes
 
 
-def retrieve_next_departures(page_url):
+def retrieve_next_departures(page_url=TPG_VRDO_URL):
     r = requests.get(page_url)
     time_tags = extract_time_tags(r.content)
     return parse_minutes(time_tags)
 
 
 if __name__ == '__main__':
-    print(retrieve_next_departures(TPG_VRDO_URL))
+    print(retrieve_next_departures())

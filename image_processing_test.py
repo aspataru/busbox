@@ -1,7 +1,7 @@
 import unittest
 
 
-class TestTimeboxMini(unittest.TestCase):
+class TestImageProcessing(unittest.TestCase):
     """TODO"""
     TESTDATA_DIR = 'test-resources/'
 
