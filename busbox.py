@@ -38,7 +38,8 @@ def run(address):
         send_image_to_timebox(timebox, "images/loading.bmp")
         minutes = retrieve_next_departures()
         img_to_send = ''
-        if minutes is None:
+        # todo move to tpg_next_departures and test
+        if minutes is None or len(minutes) == 0:
             img_to_send = "images/fail.bmp"
         else:
             print('Got', minutes, 'from TPG service')
