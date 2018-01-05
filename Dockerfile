@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
     bluez \
     libbluetooth-dev \
     libboost-python-dev \
+    libjpeg8-dev \
+
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
