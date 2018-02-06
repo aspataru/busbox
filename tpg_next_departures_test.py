@@ -26,6 +26,12 @@ class TestBusSchedule(unittest.TestCase):
         expected_times = [15, 60]
         self.assertEquals(expected_times, parsed_times)
 
+    def test_should_not_fail_on_non_digit(self):
+        times =['15a','60\'']
+        parsed_times = parse_minutes(times)
+        expected_times = [60]
+        self.assertEquals(expected_times, parsed_times)
+
 
 if __name__ == '__main__':
     unittest.main()

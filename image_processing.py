@@ -71,3 +71,6 @@ def conv_image(data):
 
 def load_image_in_timebox_format(file):
     return conv_image(load_image(file, scale=Image.BICUBIC))
+
+def convert_image_in_timebox_format(imagedata, sz=11):
+    return conv_image(process_image(imagedata, sz))

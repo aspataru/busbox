@@ -3,6 +3,7 @@ import sys
 import timebox_mini
 import image_processing
 from tpg_next_departures import retrieve_next_departures
+from digit_image_generator import DigitImageGenerator
 from os import listdir
 from os.path import isfile, join, splitext
 
@@ -23,19 +24,24 @@ def retrieve_image_for_minutes(minutes):
         return 'images/min.bmp'
 
 
-def send_image_to_timebox(timebox, path):
-    image_bytes = image_processing.load_image_in_timebox_format(path)
+def send_image_from_path_to_timebox(timebox, image_path):
+    image_bytes = image_processing.load_image_in_timebox_format(image_path)
+    timebox.send(image_bytes)
+
+def send_image_to_timebox(timebox, imagedata):
+    image_bytes = image_processing.convert_image_in_timebox_format(imagedata)
     timebox.send(image_bytes)
 
 
 def run(address):
+    image_generator = DigitImageGenerator()
     timebox = timebox_mini.TimeboxMini(address)
     timebox.connect()
     i = 0
 
     while i < 120:
         print('Calling TPG service')
-        send_image_to_timebox(timebox, "images/loading.bmp")
+        send_image_from_path_to_timebox(timebox, "images/loading.bmp")
         minutes = retrieve_next_departures()
         img_to_send = ''
         # todo move to tpg_next_departures and test
@@ -44,10 +50,9 @@ def run(address):
         else:
             print('Got', minutes, 'from TPG service')
             minutes_sorted = sorted(minutes)
-            next_bus_minutes = minutes_sorted[0]
-
-            print('Next bus in', next_bus_minutes, 'minutes')
-            img_to_send = retrieve_image_for_minutes(next_bus_minutes)
+            print('Next buses in', minutes_sorted, 'minutes')
+            # img_to_send = retrieve_image_for_minutes(next_bus_minutes)
+            img_to_send = image_generator.generate_4_digit_image(minutes_sorted)
 
         print('Sending image', img_to_send)
         send_image_to_timebox(timebox, img_to_send)

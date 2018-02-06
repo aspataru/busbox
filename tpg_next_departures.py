@@ -17,7 +17,9 @@ def parse_minutes(the_list):
         elem_str = str(elem)
         # todo ~ should be handled differently
         if elem_str != '':
-            minutes.append(int(elem_str.replace('\'', '').replace('~', '')))
+            escapedstring = elem_str.replace('\'', '').replace('~', '')
+            if (escapedstring.isdigit()):
+                minutes.append(int(escapedstring))
     return minutes
 
 
