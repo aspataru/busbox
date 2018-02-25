@@ -39,7 +39,7 @@ def run(address):
     timebox.connect()
     i = 0
 
-    while i < 120:
+    while True:
         print('Calling TPG service')
         send_image_from_path_to_timebox(timebox, "images/loading.bmp")
         minutes = retrieve_next_departures()
@@ -58,7 +58,7 @@ def run(address):
         send_image_to_timebox(timebox, img_to_send)
 
         i += 1
-        time.sleep(5)
+        time.sleep(30)
 
 
 if __name__ == '__main__':

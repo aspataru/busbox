@@ -1,5 +1,5 @@
 # build with: docker build -t busbox .
-# run with: docker run --net host --rm busbox 11:75:58:DA:E6:E2
+# run with: docker run -it --name busbox --net host --rm busbox 11:75:58:DA:E6:E2
 
 # could probably use a smaller base image
 FROM ubuntu:16.04
@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     libbluetooth-dev \
     libboost-python-dev \
     libjpeg8-dev \
-
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
