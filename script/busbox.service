@@ -1,0 +1,14 @@
+[Unit]
+Description=Starts the busbox daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/docker run -it --name busbox --net host --rm busbox 11:75:58:DA:E6:E2
+WorkingDirectory=/home/pi/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
