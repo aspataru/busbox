@@ -1,5 +1,14 @@
 # BusBox
-Transform the Divoom Timebox Mini into a bus notice board
+Transform the Divoom Timebox Mini into a bus timetable!
+
+## Installation on Raspbian
+Get docker and build the image
+```bash
+curl -sSL https://get.docker.com | sh
+```
+Set up the service busbox.service, simple guide here:
+[Systemd](https://www.raspberrypi.org/documentation/linux/usage/systemd.md)
+
 
 #### Thanks to
 
