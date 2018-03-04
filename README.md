@@ -9,6 +9,10 @@ curl -sSL https://get.docker.com | sh
 Set up the service busbox.service, simple guide here:
 [Systemd](https://www.raspberrypi.org/documentation/linux/usage/systemd.md)
 
+Check service logs
+```bash
+journalctl -u busbox.service
+```
 
 #### Thanks to
 
