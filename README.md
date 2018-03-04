@@ -14,3 +14,5 @@ Set up the service busbox.service, simple guide here:
 
 * [ScR4tCh/timebox](https://github.com/ScR4tCh/timebox)
 * [derHeinz/divoom-adapter](https://github.com/derHeinz/divoom-adapter)
+
+[[https://github.com/aspataru/busbox/blob/master/docs/busbox.jpg|alt=busbox]]
